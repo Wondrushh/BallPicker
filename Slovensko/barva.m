@@ -1,4 +1,4 @@
-COM_CloseNXT all
+ COM_CloseNXT all
 clc, clear, close;
 
 nxt = COM_OpenNXT();
