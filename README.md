@@ -6,7 +6,7 @@ Robot bude mít nějaký prostor, který si oskenuje tím, že najde hranici pro
 
 <h2>fce robota</h2>
 <h3>Vymezit si plochu, ve které se bude pohybovat + najít traasu</h3>
-      <li>po posbírání kuliček se robot vrátí na původní místo, kde bude třídit</li>
+      Po posbírání kuliček se robot vrátí na původní místo, kde bude třídit
    <h3>seznam potřebných motorů a senzorů: </h3>
    <ul>
           <li>motor 1 + 2 = kola</li>
