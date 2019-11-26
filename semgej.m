@@ -8,7 +8,7 @@ COM_SetDefaultNXT(nxt);
 colors = [];
 OpenNXT2Color(SENSOR_4,'FULL');
 %precte barvu a otoci motorem kdyz je tam kulicka
-readBallColor(SENSOR_4,colors);
+readBallColor(SENSOR_4,'A',colors);
 
 
 %% musi tam byt
