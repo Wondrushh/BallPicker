@@ -1,4 +1,10 @@
 function colorVec = readBallColor(sensorPort,motorPort,colorVec)
+%% Funkce precte barvu kulicky, posune pasem a zapise kulicku do vektoru
+
+      %sensorPort = port, do ktereho se pripoji RGB sensor
+      %motorPort = port, do ktereho se pripoji motor, ktery hybe pasem
+      %colorVec = vektor, do ktereho se uklada poradi kulicek
+%% telo funkce
   color = GetNXT2Color(sensorPort);
   motA= NXTMotor(motorPort, 'Power',  0);
   switch color
