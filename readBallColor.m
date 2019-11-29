@@ -6,7 +6,7 @@ function colorVec = readBallColor(sensorPort,motorPort,colorVecInp)
       %colorVec = vektor, do ktereho se uklada poradi kulicek
 %% telo funkce
   colorVec = colorVecInp;
-  degreeTurn = 180;
+  degreeTurn = 90;
   defPower = -50;
   color = GetNXT2Color(sensorPort);
   switch color
@@ -39,7 +39,7 @@ function colorVec = readBallColor(sensorPort,motorPort,colorVecInp)
       disp('zluta')
       pause(3);
     otherwise
-      pause(3)
+      pause(0.1)
   end
 
 end

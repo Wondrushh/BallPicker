@@ -8,10 +8,9 @@ COM_SetDefaultNXT(nxt);
 colors = [];
 OpenNXT2Color(SENSOR_4,'FULL');
 while 1
-  %precte barvu a otoci motorem kdyz je tam kulicka
+  %jede dopredu a precte barvu a otoci motorem kdyz je tam kulicka
+  goStraight('C', 'B', -20);
   colors = readBallColor(SENSOR_4,'A',colors);
 end
-
-
 %% musi tam byt
 COM_CloseNXT(nxt);
