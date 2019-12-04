@@ -38,6 +38,8 @@ function colorVec = readBallColor(sensorPort,motorPort,colorVecInp)
       colorVec(end+1) = 4;
       disp('zluta')
       pause(3);
+    case 'BLACK'
+      goTurn()
     otherwise
       pause(0.1)
   end

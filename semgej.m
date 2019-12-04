@@ -4,13 +4,19 @@ clc, clear, close
 
 nxt = COM_OpenNXT();
 COM_SetDefaultNXT(nxt);
-%% nastaveni senzoru
+%% nastaveni senzoru a motoru
 colors = [];
-OpenNXT2Color(SENSOR_4,'FULL');
+colorSensor = SENSOR_4;
+OpenNXT2Color(colorSensor,'FULL');
+conveyorMotor = 'A';
+rightMotor = 'B';
+leftMotor = 'C';
+turn = 1; %1 je doprava, 0 je doleva
 while 1
-  %jede dopredu a precte barvu a otoci motorem kdyz je tam kulicka
-  goStraight('C', 'B', -20);
-  colors = readBallColor(SENSOR_4,'A',colors);
+  %jede dopredu a precte barvu a otoci motorem kdyz je tam kulicka, kdyz
+  %uvidi cernou, otoci se 
+  goStraight(rightMotor, leftMotor, -20);
+  colors = readBallColor(colorSensor,conveyorMotor,colors);
 end
 %% musi tam byt
 COM_CloseNXT(nxt);
