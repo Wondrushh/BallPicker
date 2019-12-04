@@ -1,4 +1,4 @@
-function colorVec = readBallColor(sensorPort,motorPort,colorVecInp)
+function [colorVec,turnOut] = readBallColor(sensorPort,motorPort,colorVecInp)
 %% Funkce precte barvu kulicky, posune pasem a zapise kulicku do vektoru
 
       %sensorPort = port, do ktereho se pripoji RGB sensor
@@ -17,6 +17,7 @@ function colorVec = readBallColor(sensorPort,motorPort,colorVecInp)
       colorVec(end+1) = 1;
       disp('cervena')
       pause(3);
+      turnOut = 0;
     case 'GREEN'
       motA = NXTMotor(motorPort, 'Power', defPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn, 'ActionAtTachoLimit', 'HoldBrake');
       motA.SendToNXT()
@@ -24,6 +25,7 @@ function colorVec = readBallColor(sensorPort,motorPort,colorVecInp)
       colorVec(end+1) = 2;
       disp('zelena')
       pause(3);
+      turnOut = 0;
     case 'BLUE'
       motA = NXTMotor(motorPort, 'Power', defPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn, 'ActionAtTachoLimit', 'HoldBrake');
       motA.SendToNXT()
@@ -31,6 +33,7 @@ function colorVec = readBallColor(sensorPort,motorPort,colorVecInp)
       colorVec(end+1) = 3;
       disp('modra')
       pause(3);
+      turnOut = 0;
     case 'YELLOW'
       motA = NXTMotor(motorPort, 'Power', defPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn, 'ActionAtTachoLimit', 'HoldBrake');
       motA.SendToNXT()
@@ -38,10 +41,12 @@ function colorVec = readBallColor(sensorPort,motorPort,colorVecInp)
       colorVec(end+1) = 4;
       disp('zluta')
       pause(3);
+      turnOut = 0;
     case 'BLACK'
-      goTurn()
+      turnOut = 1;
+      return
     otherwise
-      pause(0.1)
+      pause(0.05)
   end
 
 end

@@ -6,8 +6,8 @@ function goStraight(motorLeft, motorRight, speed)
 motLeft = NXTMotor(motorLeft, 'Power',  speed);
 motRight = NXTMotor(motorRight, 'Power', speed);
 
-motLeft.SendToNXT()
-motRight.SendToNXT()
+motLeft.SendToNXT();
+motRight.SendToNXT();
 
 pause(0.1)
 

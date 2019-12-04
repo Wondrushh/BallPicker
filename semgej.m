@@ -11,12 +11,18 @@ OpenNXT2Color(colorSensor,'FULL');
 conveyorMotor = 'A';
 rightMotor = 'B';
 leftMotor = 'C';
-turn = 1; %1 je doprava, 0 je doleva
+motorSpeed = -20;
+turn = 0; %kdyz je 1, vykona se otocka
+turnDirection = 0; %0 je doleva, 1 je doprava
 while 1
   %jede dopredu a precte barvu a otoci motorem kdyz je tam kulicka, kdyz
   %uvidi cernou, otoci se 
-  goStraight(rightMotor, leftMotor, -20);
-  colors = readBallColor(colorSensor,conveyorMotor,colors);
+  goStraight(rightMotor, leftMotor, motorSpeed);
+  [colors,turn] = readBallColor(colorSensor,conveyorMotor,colors);
+    if turn == 1 % kdyz readBallColor vyda prikaz na otaceni, robot se otoci
+      turnDirection = goTurn(leftMotor,rightMotor,motorSpeed,turnDirection);
+      turn = 0;
+    end
 end
 %% musi tam byt
 COM_CloseNXT(nxt);
