@@ -23,6 +23,7 @@ while 1
   [colors,turn] = readBallColor(colorSensor,conveyorMotor,colors);
     if turn == 1 % kdyz readBallColor vyda prikaz na otaceni, robot se otoci
       turnDirection = goTurn(leftMotor,rightMotor,motorSpeed,turnDirection);
+      pause(5);
       turn = 0;
     end
     if numel(colors) == 8

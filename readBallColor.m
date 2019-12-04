@@ -50,7 +50,7 @@ function [colorVec,turnOut] = readBallColor(sensorPort,motorPort,colorVecInp)
       turnOut = 1;
       return
     otherwise
-      pause(0.05)
+%       pause(0.05)
       turnOut = 0;
   end
 
