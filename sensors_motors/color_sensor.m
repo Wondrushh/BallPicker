@@ -7,7 +7,7 @@ COM_SetDefaultNXT(nxt);
 %% FULL color - outputs 'BLACK', 'BLUE', 'GREEN', 'YELLOW', 'RED', 'WHITE'
 OpenNXT2Color(SENSOR_4, 'FULL');
 
-for i = 1:100    
+for i = 1:10000   
     color = GetNXT2Color(SENSOR_4)
     pause(0.1);
 end

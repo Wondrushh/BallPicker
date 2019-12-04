@@ -1,4 +1,6 @@
 %% musi tam byt
+% bt = Bluetooth('NXTx1', 1);
+% fopen(bt);
 COM_CloseNXT all
 clc, clear, close
 
@@ -11,7 +13,7 @@ OpenNXT2Color(colorSensor,'FULL');
 conveyorMotor = 'A';
 rightMotor = 'B';
 leftMotor = 'C';
-motorSpeed = -20;
+motorSpeed = 10;
 turn = 0; %kdyz je 1, vykona se otocka
 turnDirection = 0; %0 je doleva, 1 je doprava
 while 1
@@ -22,6 +24,9 @@ while 1
     if turn == 1 % kdyz readBallColor vyda prikaz na otaceni, robot se otoci
       turnDirection = goTurn(leftMotor,rightMotor,motorSpeed,turnDirection);
       turn = 0;
+    end
+    if numel(colors) == 8
+      break
     end
 end
 %% musi tam byt
