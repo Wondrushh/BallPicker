@@ -1,10 +1,8 @@
 %% musi tam byt
-% bt = Bluetooth('NXTx1', 1);
-% fopen(bt);
 COM_CloseNXT all
 clc, clear, close
 
-nxt = COM_OpenNXT();
+nxt = COM_OpenNXT('bluetooth.ini');
 COM_SetDefaultNXT(nxt);
 %% nastaveni senzoru a motoru
 colors = [];
