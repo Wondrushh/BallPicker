@@ -1,7 +1,6 @@
 %% musi tam byt
 COM_CloseNXT all
 clc, clear, close
-
 nxt = COM_OpenNXT('bluetooth.ini');
 COM_SetDefaultNXT(nxt);
 %% nastaveni senzoru a motoru
@@ -16,17 +15,17 @@ turn = 0; %kdyz je 1, vykona se otocka
 turnDirection = 0; %0 je doleva, 1 je doprava
 while 1
   %jede dopredu a precte barvu a otoci motorem kdyz je tam kulicka, kdyz
-  %uvidi cernou, otoci se 
+  %uvidi cernou, otoci se
   goStraight(rightMotor, leftMotor, motorSpeed);
   [colors,turn] = readBallColor(colorSensor,conveyorMotor,colors);
-    if turn == 1 % kdyz readBallColor vyda prikaz na otaceni, robot se otoci
-      turnDirection = goTurn(leftMotor,rightMotor,motorSpeed,turnDirection);
-      pause(5);
-      turn = 0;
-    end
-    if numel(colors) == 8
-      break
-    end
+  if turn == 1 % kdyz readBallColor vyda prikaz na otaceni, robot se otoci
+    turnDirection = goTurn(leftMotor,rightMotor,motorSpeed,turnDirection);
+    pause(5);
+    turn = 0;
+  end
+  if numel(colors) == 8
+    break
+  end
 end
 %% musi tam byt
 COM_CloseNXT(nxt);
