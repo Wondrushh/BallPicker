@@ -5,7 +5,7 @@ function [turnDirection] = goTurn(motorLeft, motorRight, speed, turnDirectionInp
   motRight = NXTMotor(motorRight, 'Power', 0);
   
   secondWheelSpeed = ceil(-(speed/4));
-  pauseSec = 6.5;
+  pauseSec = 9;
   
   motLeft.SendToNXT();
   motRight.SendToNXT();
