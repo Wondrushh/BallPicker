@@ -6,7 +6,7 @@ function [turnDirection] = goTurn(motorLeft, motorRight, speed, turnDirectionInp
 
   motLeft.SendToNXT();
   motRight.SendToNXT();
-  pause(0.1)
+  pause(0.05)
 %   degrees = 2160;
     switch turnDirectionInp
       case 0 %doleva
