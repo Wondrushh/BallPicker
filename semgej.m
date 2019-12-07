@@ -27,5 +27,7 @@ while 1
     break
   end
 end
+%% zacne hledat kalisky
+
 %% musi tam byt
 COM_CloseNXT(nxt);
