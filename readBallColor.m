@@ -46,7 +46,10 @@ function [colorVec,turnOut] = readBallColor(sensorPort,motorPort,colorVecInp)
       disp('zluta')
       pause(3);
       turnOut = 0;
-    case 'BLACK' | 'BLUE'
+    case 'BLACK'
+      turnOut = 1;
+      return
+    case 'BLUE'
       turnOut = 1;
       return
     otherwise
