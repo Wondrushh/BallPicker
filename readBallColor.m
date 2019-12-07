@@ -28,15 +28,15 @@ function [colorVec,turnOut] = readBallColor(sensorPort,motorPort,colorVecInp)
       disp('zelena')
       pause(3);
       turnOut = 0;
-    case 'BLUE'
-      pause(1);
-      motA = NXTMotor(motorPort, 'Power', defPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn, 'ActionAtTachoLimit', 'HoldBrake');
-      motA.SendToNXT()
-      %prida se do vektoru 3
-      colorVec(end+1) = 3;
-      disp('modra')
-      pause(3);
-      turnOut = 0;
+%     case 'BLUE'
+%       pause(1);
+%       motA = NXTMotor(motorPort, 'Power', defPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn, 'ActionAtTachoLimit', 'HoldBrake');
+%       motA.SendToNXT()
+%       %prida se do vektoru 3
+%       colorVec(end+1) = 3;
+%       disp('modra')
+%       pause(3);
+%       turnOut = 0;
     case 'YELLOW'
       pause(1);
       motA = NXTMotor(motorPort, 'Power', defPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn, 'ActionAtTachoLimit', 'HoldBrake');
@@ -46,7 +46,7 @@ function [colorVec,turnOut] = readBallColor(sensorPort,motorPort,colorVecInp)
       disp('zluta')
       pause(3);
       turnOut = 0;
-    case 'BLACK'
+    case 'BLACK' | 'BLUE'
       turnOut = 1;
       return
     otherwise
