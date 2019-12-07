@@ -14,7 +14,7 @@ function [turnDirection] = goTurn(motorLeft, motorRight, speed, turnDirectionInp
         motRight = NXTMotor(motorRight, 'Power', speed);
         motLeft.SendToNXT();
         motRight.SendToNXT();
-        pause(0.33*speed);
+        pause(0.38*speed);
         turnDirection = 1;
         motLeft  = NXTMotor(motorLeft, 'Power',  0); %'TachoLimit', 3, 'ActionAtTachoLimit', 'Brake'); %zastavi motory , 'TachoLimit', 0, 'ActionAtTachoLimit', 'HoldBrake'
         motRight = NXTMotor(motorRight, 'Power', 0);% 'TachoLimit', 3, 'ActionAtTachoLimit', 'Brake'); %zastavi motory
@@ -27,7 +27,7 @@ function [turnDirection] = goTurn(motorLeft, motorRight, speed, turnDirectionInp
         motRight = NXTMotor(motorRight, 'Power', -speed/4); %'TachoLimit', degrees/speed, 'ActionAtTachoLimit', 'Brake');
         motLeft.SendToNXT();
         motRight.SendToNXT();
-        pause(0.33*speed);
+        pause(0.38*speed);
         turnDirection = 0;
         motLeft  = NXTMotor(motorLeft, 'Power',  0); %'TachoLimit', 3, 'ActionAtTachoLimit', 'Brake'); %zastavi motory , 'TachoLimit', 0, 'ActionAtTachoLimit', 'HoldBrake'
         motRight = NXTMotor(motorRight, 'Power', 0);% 'TachoLimit', 3, 'ActionAtTachoLimit', 'Brake'); %zastavi motory
