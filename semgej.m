@@ -23,11 +23,27 @@ while 1
     pause(0.3);
     turn = 0;
   end
-  if numel(colors) == 8
+  if numel(colors) == 3
     break
   end
 end
 %% zacne hledat kalisky
 
+startSorting = 0;
+while 1
+  %jede dopredu a precte barvu, kdyz je cerna, otoci se, kdyz cervena,
+  %zacne sortovat
+  goStraight(rightMotor, leftMotor, motorSpeed);
+  [startSorting, turnOut] = searchForSort(colorSensor);
+  if startSorting == 1 %kdyz 
+    sorting()
+  end
+  
+  if turn == 1 % kdyz readBallColor vyda prikaz na otaceni, robot se otoci
+    turnDirection = goTurn(leftMotor,rightMotor,motorSpeed,turnDirection);
+    pause(0.3);
+    turn = 0;
+  end
+end
 %% musi tam byt
 COM_CloseNXT(nxt);
