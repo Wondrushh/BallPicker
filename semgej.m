@@ -6,12 +6,14 @@ COM_SetDefaultNXT(nxt);
 %% nastaveni senzoru a motoru
 colors = [];
 colorSensor = SENSOR_4;
+rearSensor = SENSOR_3;
 conveyorMotor = 'A';
 rightMotor = 'B';
 leftMotor = 'C';
 motorSpeed = 10;
 turn = 0; %kdyz je 1, vykona se otocka
 turnDirection = 0; %0 je doleva, 1 je doprava
+rateOfTurn = 9;
 OpenNXT2Color(colorSensor,'FULL');
 while 1
   %jede dopredu a precte barvu a otoci motorem kdyz je tam kulicka, kdyz
@@ -27,20 +29,20 @@ while 1
     break
   end
 end
-%% zacne hledat kalisky
+%% zacne hledat kalisky a tridit
 
 startSorting = 0;
 while 1
   %jede dopredu a precte barvu, kdyz je cerna, otoci se, kdyz cervena,
   %zacne sortovat
   goStraight(rightMotor, leftMotor, motorSpeed);
-  [startSorting, turnOut] = searchForSort(colorSensor);
-  if startSorting == 1 %kdyz 
-    sorting()
+  [startSorting, turn] = searchForSort(colorSensor);
+  if startSorting == 1 %kdyz startSorting ma hodnotu 1, spusti se skript na trideni
+    sorting(conveyorMotor,colors,rearSensor);
   end
   
-  if turn == 1 % kdyz readBallColor vyda prikaz na otaceni, robot se otoci
-    turnDirection = goTurn(leftMotor,rightMotor,motorSpeed,turnDirection);
+  if turn == 1 % kdyz searchForSort vyda prikaz na otaceni, robot se otoci
+    turnDirection = goTurn(leftMotor,rightMotor,motorSpeed,turnDirection,rateOfTurn);
     pause(0.3);
     turn = 0;
   end
