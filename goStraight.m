@@ -9,7 +9,7 @@ motRight = NXTMotor(motorRight, 'Power', speed);
 motLeft.SendToNXT();
 motRight.SendToNXT();
 
-pause(0.1)
+pause(0.03)
 
 end
 

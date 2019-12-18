@@ -1,11 +1,13 @@
-function [turnDirection] = goTurn(motorLeft, motorRight, speed, turnDirectionInp, pauseSec)
+function [turnDirection] = goTurn(motorLeft, motorRight, speed, turnDirectionInp)
 %Tato funkce slouzi k tomu, aby robot otocil svuj smer pohybu.
 %Udela se to, ze se robot otoci na jednom kole
+  disp('Otacim se')
+  speed = 15;
   motLeft  = NXTMotor(motorLeft, 'Power', 0); 
   motRight = NXTMotor(motorRight, 'Power', 0);
   
   secondWheelSpeed = ceil(-(speed/4));
-  %pauseSec = 9;
+  pauseSec = 7;
   
   motLeft.SendToNXT();
   motRight.SendToNXT();

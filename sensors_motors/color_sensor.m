@@ -1,7 +1,7 @@
 COM_CloseNXT all
 clear, close;
 
-nxt = COM_OpenNXT();
+nxt = COM_OpenNXT('bluetooth.ini');
 COM_SetDefaultNXT(nxt);
 
 %% FULL color - outputs 'BLACK', 'BLUE', 'GREEN', 'YELLOW', 'RED', 'WHITE'

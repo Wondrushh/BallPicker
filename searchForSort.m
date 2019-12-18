@@ -5,7 +5,7 @@ function [startSorting,turnOut] = searchForSort(sensorPort)
 %   otoci se, kdyz najde cervenou, prepise se promenna, která spousti
 %   sortujici mechanizmus
 
-color = GetNXT2Color(sensorPort);
+color = GetNXT2Color(sensorPort)
 
   switch color
     case 'RED'
