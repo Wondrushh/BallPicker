@@ -11,21 +11,21 @@ conveyorMotor = 'A';
 rightMotor = 'B';
 leftMotor = 'C';
 motorSpeed = 8;
-numberOfBalls = 3;
+numberOfBalls = 11; %zasobnik pobere 11 kulicek
 turn = 0; %kdyz je 1, vykona se otocka
 turnDirection = 0; %0 je doleva, 1 je doprava
-rateOfTurn = 9;
+% rateOfTurn = 9; nepouziva se
 OpenNXT2Color(colorSensor, 'FULL');
 OpenNXT2Color(rearSensor, 'FULL');
 i = 0;
 while 1
   %jede dopredu a precte barvu a otoci motorem kdyz je tam kulicka, kdyz
   %uvidi cernou, otoci se
-  i = i+1
+  i = i+1;
   goStraight(rightMotor, leftMotor, motorSpeed);
   [colors,turn] = readBallColor(colorSensor,conveyorMotor,colors);
   if turn == 1 % kdyz readBallColor vyda prikaz na otaceni, robot se otoci
-    turnDirection = goTurn(leftMotor,rightMotor,motorSpeed,turnDirection);
+    turnDirection = goTurn(leftMotor,rightMotor,turnDirection);
     pause(0.3);
     turn = 0;
   end
@@ -34,7 +34,6 @@ while 1
   end
 end
 %% zacne hledat kalisky a tridit
-
 startSorting = 0;
 while 1
   %jede dopredu a precte barvu, kdyz je cerna, otoci se, kdyz cervena,
@@ -47,7 +46,7 @@ while 1
   end
   
   if turn == 1 % kdyz searchForSort vyda prikaz na otaceni, robot se otoci
-    turnDirection = goTurn(leftMotor,rightMotor,motorSpeed,turnDirection);
+    turnDirection = goTurn(leftMotor,rightMotor,turnDirection);
     pause(0.3);
     turn = 0;
   end

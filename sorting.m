@@ -23,13 +23,13 @@ motRight = NXTMotor(rightMotor, 'Power', speed);
 motLeft.SendToNXT();
 motRight.SendToNXT();
 
-pause(6.75) %pri rychlosti 10 funguje velmi dobre
+pause(6.6) %pri rychlosti 10 funguje velmi dobre
 
 StopMotor('all','off');
 
-conveyor = NXTMotor(conveyorMotor, 'Power', conveyorPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn*8, 'ActionAtTachoLimit', 'HoldBrake');
-conveyor.SendToNXT();
-pause(5.5);
+% conveyor = NXTMotor(conveyorMotor, 'Power', conveyorPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn, 'ActionAtTachoLimit', 'HoldBrake');
+% conveyor.SendToNXT();
+%pause(5.5);
 %% pas se posune o pozadovany kus podle poctu kulicek
 % conveyor = NXTMotor(conveyorMotor, 'Power', conveyorPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn*0, 'ActionAtTachoLimit', 'HoldBrake');
 % conveyor.SendToNXT();
@@ -38,7 +38,7 @@ pause(5.5);
 %% pojede dopredu, dokud neuvidi cervenou caru a zpomali, bude hledat barvu a az ji najde, zpet do zadu a znova
 for i = 1:numel(colorVec)
   
-  goBack(leftMotor,rightMotor,ceil(speed*0.65));
+  goBack(leftMotor,rightMotor,ceil(speed*0.85));
   while 1 %skenuje barvy
     color = GetNXT2Color(rearColorSensor)
     switch color 
@@ -51,12 +51,12 @@ for i = 1:numel(colorVec)
   pause(0.2);
   while 1 %zacne jet pomalinku dopredu a zkoumat barvy, az narazi na tu co ma ve vektoru, vyklopi ji
     color = GetNXT2Color(rearColorSensor)
-    goBack(leftMotor,rightMotor,ceil(speed*0.3));
+    goBack(leftMotor,rightMotor,ceil(speed*0.5));
     
     switch color
       case 'RED' 
         if colorVec(i) == 1
-          pause(0.3)
+          pause(1.7)
           StopMotor('all','off');
           conveyor = NXTMotor(conveyorMotor, 'Power', conveyorPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn, 'ActionAtTachoLimit', 'HoldBrake');
           conveyor.SendToNXT();
@@ -68,25 +68,25 @@ for i = 1:numel(colorVec)
         end
       case 'GREEN'
         if colorVec(i) == 2
-          pause(0.3)
+          pause(1.7)
           StopMotor('all','off');
           conveyor = NXTMotor(conveyorMotor, 'Power', conveyorPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn, 'ActionAtTachoLimit', 'HoldBrake');
           conveyor.SendToNXT();
           pause(3);
-          goStraight(leftMotor, rightMotor, speed)
+          goStraight(leftMotor, rightMotor, speed+5)
           pause(5);
           StopMotor('all','off');
           break
         end
       case 'YELLOW'
         if colorVec(i) == 4
-          pause(0.3)
+          pause(1.7)
           StopMotor('all','off');
           conveyor = NXTMotor(conveyorMotor, 'Power', conveyorPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn, 'ActionAtTachoLimit', 'HoldBrake');
           conveyor.SendToNXT();
           pause(3);
-          goStraight(leftMotor, rightMotor, speed)
-          pause(5);
+          goStraight(leftMotor, rightMotor, speed+5)
+          pause(7);
           StopMotor('all','off');
           break
         end

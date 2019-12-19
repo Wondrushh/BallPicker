@@ -8,10 +8,12 @@ function [colorVec,turnOut] = readBallColor(sensorPort,motorPort,colorVecInp)
   colorVec = colorVecInp;
   degreeTurn = 120;
   defPower = -20;
+  pauseSec = 3;
+  buffer = 4;
   color = GetNXT2Color(sensorPort)
   switch color
     case 'RED'
-      pause(1);
+      pause(pauseSec);
       motA = NXTMotor(motorPort, 'Power', defPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn, 'ActionAtTachoLimit', 'Brake');
       motA.SendToNXT()
       %prida se do vektoru 1
@@ -20,7 +22,7 @@ function [colorVec,turnOut] = readBallColor(sensorPort,motorPort,colorVecInp)
       pause(1.5);
       turnOut = 0;
     case 'GREEN'
-      pause(1);
+      pause(pauseSec);
       motA = NXTMotor(motorPort, 'Power', defPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn, 'ActionAtTachoLimit', 'Brake');
       motA.SendToNXT()
       %prida se do vektoru 2
@@ -38,7 +40,7 @@ function [colorVec,turnOut] = readBallColor(sensorPort,motorPort,colorVecInp)
 %       pause(3);
 %       turnOut = 0;
     case 'YELLOW'
-      pause(1);
+      pause(pauseSec);
       motA = NXTMotor(motorPort, 'Power', defPower, 'SpeedRegulation', false, 'TachoLimit', degreeTurn, 'ActionAtTachoLimit', 'Brake');
       motA.SendToNXT()
       %prida se do vektoru 4
@@ -47,8 +49,20 @@ function [colorVec,turnOut] = readBallColor(sensorPort,motorPort,colorVecInp)
       pause(1.5);
       turnOut = 0;
     case 'BLACK'
-      turnOut = 1;
-      return
+      for i = 1:buffer
+        color = GetNXT2Color(sensorPort)
+        switch color
+          case 'BLACK'
+            continue
+          otherwise
+            turnOut = 0;
+          break
+        end
+      end
+      if i == buffer
+        turnOut = 1;
+        return
+      end 
     case 'BLUE'
       turnOut = 1;
       return

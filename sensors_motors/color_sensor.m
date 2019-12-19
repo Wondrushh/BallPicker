@@ -5,13 +5,13 @@ nxt = COM_OpenNXT('bluetooth.ini');
 COM_SetDefaultNXT(nxt);
 
 %% FULL color - outputs 'BLACK', 'BLUE', 'GREEN', 'YELLOW', 'RED', 'WHITE'
-OpenNXT2Color(SENSOR_4, 'FULL');
+OpenNXT2Color(SENSOR_1, 'FULL');
 
-for i = 1:10000   
-    color = GetNXT2Color(SENSOR_4)
+for i = 1:100000   
+    color = GetNXT2Color(SENSOR_1)
     pause(0.1);
 end
-CloseSensor(SENSOR_4);
+CloseSensor(SENSOR_1);
 
 %% 'RED', 'GREEN', 'BLUE', 'NONE' mode - 0 1023
 
